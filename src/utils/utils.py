@@ -160,14 +160,14 @@ def show_me(df: DataFrame, num_to_show=1):
 
 def hr_counts_of_businessTravel_and_JobRole_and_EmployeeNumber(
         df: DataFrame,
-        count_businessTravel_name="count_make",
-        count_JobRole_name="count_model",
-        count_employeeNumber_name="count_uid"
+        count_businessTravel_name="count_businessTravel",
+        count_JobRole_name="count_JobRole",
+        count_employeeNumber_name="count_employeeNumber"
 ) -> DataFrame:
     count_df = df.groupBy(F.col("Department")) \
-        .agg(F.countDistinct(F.col("make")).alias(count_businessTravel_name),
-             F.countDistinct(F.col("model")).alias(count_JobRole_name),
-             F.countDistinct(F.col("unique_identity")).alias(count_employeeNumber_name))
+        .agg(F.countDistinct(F.col("BusinessTravel")).alias(count_businessTravel_name),
+             F.countDistinct(F.col("JobRole")).alias(count_JobRole_name),
+             F.countDistinct(F.col("EmployeeNumber")).alias(count_employeeNumber_name))
 
     return count_df
 
